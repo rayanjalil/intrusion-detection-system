@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Intrusion Detection Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    🛡 Intrusion Detector
+    <span class="pill">LIVE</span>
+  </div>
+  <div><span class="live-dot"></span><span style="font-size:.85rem;">Auto-refreshing every 3s</span></div>
+</nav>
+
+<div class="page-header">
+  <p class="page-label">Security Operations</p>
+  <h1 class="page-title">Live <span>Threat</span> Monitor</h1>
+  <p class="page-sub">Real-time login attempts, brute-force detection, and IP blocking.</p>
+</div>
+
+<div class="content">
+
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-icon">📋</div><div class="kpi-val" id="k-total">—</div><div class="kpi-lbl">Total Attempts</div></div>
+    <div class="kpi-card danger"><div class="kpi-icon">⚠️</div><div class="kpi-val" id="k-failed">—</div><div class="kpi-lbl">Failed Attempts</div></div>
+    <div class="kpi-card success"><div class="kpi-icon">✅</div><div class="kpi-val" id="k-success">—</div><div class="kpi-lbl">Successful Logins</div></div>
+    <div class="kpi-card danger"><div class="kpi-icon">🚫</div><div class="kpi-val" id="k-blocked">—</div><div class="kpi-lbl">Blocked IPs</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-title"><span class="dot"></span>Recent Login Attempts</div>
+      <div style="overflow-x:auto;">
+        <table class="data-table">
+          <thead><tr><th>Time</th><th>IP</th><th>Username</th><th>Result</th></tr></thead>
+          <tbody id="attempts-tbody">
+            <tr><td colspan="4" class="empty-state">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title"><span class="dot"></span>Blocked IPs</div>
+      <div id="blocked-list">
+        <div class="empty-state">Loading...</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="/static/js/dashboard.js"></script>
+</body>
+</html>

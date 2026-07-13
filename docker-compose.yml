@@ -1,0 +1,33 @@
+services:
+  target:
+    build: ./target
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./target:/app
+
+  attacker:
+    build: ./attacker
+    depends_on:
+      - target
+
+  guard:
+    build: ./guard
+    volumes:
+      - ./target:/data
+    depends_on:
+      - target
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    env_file:
+      - .env
+
+  dashboard:
+    build: ./dashboard
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./target:/data
+    depends_on:
+      - target
