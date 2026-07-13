@@ -18,13 +18,16 @@ This project simulates a realistic attack scenario end-to-end:
 All 4 components run as independent, containerized services communicating over Docker's internal network.
 
 ## Architecture
+
+```
 ┌──────────┐      ┌──────────┐      ┌──────────┐
 │ Attacker │ ───> │  Target  │ <─── │Dashboard │
 └──────────┘      └────┬─────┘      └──────────┘
-│ (shared log volume)
-┌────▼─────┐
-│  Guard   │ ──> Email + AI Summary + IP Block
-└──────────┘
+                        │ (shared log volume)
+                   ┌────▼─────┐
+                   │  Guard   │ ──> Email + AI Summary + IP Block
+                   └──────────┘
+```
 
 ## Tech stack
 
